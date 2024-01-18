@@ -13,18 +13,19 @@
             android:title="Home"
             />
         <item
-            android:id="@+id/nav_search"
-            android:icon="@drawable/ic_nav_search"
-            android:title="Search"/>
-        <item
             android:id="@+id/nav_users"
             android:icon="@drawable/ic_nav_users"
             android:title="Users"/>
+        <item
+            android:id="@+id/nav_communities"
+            android:icon="@drawable/ic_nav_communities"
+            android:title="Communities"/>
 
         <item
-            android:id="@+id/nav_notifications"
-            android:icon="@drawable/ic_nav_noti"
-            android:title="Notifications"/>
+            android:id="@+id/nav_posts"
+            android:icon="@drawable/ic_nav_posts"
+            android:title="Posts"/>
+
             />
 
         <item

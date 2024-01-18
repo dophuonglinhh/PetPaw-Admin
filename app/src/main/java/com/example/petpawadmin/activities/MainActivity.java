@@ -3,34 +3,18 @@ package com.example.petpawadmin.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.petpawadmin.R;
 import com.example.petpawadmin.databinding.ActivityMainBinding;
-import com.example.petpawadmin.databinding.ActivitySignInBinding;
 import com.example.petpawadmin.fragments.screens.HomeFragment;
-import com.example.petpawadmin.fragments.screens.NotificationFragment;
-import com.example.petpawadmin.fragments.screens.SearchFragment;
+import com.example.petpawadmin.fragments.screens.CommunitiesFragment;
+import com.example.petpawadmin.fragments.screens.PostsFragment;
 import com.example.petpawadmin.fragments.screens.UsersFragment;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -66,14 +50,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (itemId == R.id.nav_home) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
-        } else if (itemId == R.id.nav_search) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchFragment()).commit();
-
         } else if (itemId == R.id.nav_users) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UsersFragment()).commit();
 
-        } else if (itemId == R.id.nav_notifications) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NotificationFragment()).commit();
+        } else if (itemId == R.id.nav_communities) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CommunitiesFragment()).commit();
+
+        } else if (itemId == R.id.nav_posts) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PostsFragment()).commit();
 
         } else if (itemId == R.id.logout) {
             // FirebaseAuth.getInstance().signOut();
