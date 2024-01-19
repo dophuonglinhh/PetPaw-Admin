@@ -43,5 +43,15 @@ android:paddingVertical="5sp">
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/deleteCommunityBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            app:cornerRadius="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="20dp"/>
+
     </RelativeLayout>
 </FrameLayout>

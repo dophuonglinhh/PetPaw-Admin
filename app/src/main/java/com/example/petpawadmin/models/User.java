@@ -18,6 +18,15 @@ public class User implements FirebaseDoc {
     private LatLng location;
 
     private String country;
+    private String banReason;
+
+    public String getBanReason() {
+        return banReason;
+    }
+
+    public void setBanReason(String banReason) {
+        this.banReason = banReason;
+    }
 
     public LatLng getLocation() {
         return location;

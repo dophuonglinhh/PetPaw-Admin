@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
-        android:background="@drawable/navigation_border"
+        android:background="@drawable/border_navigation"
         android:layout_gravity="start"
         app:headerLayout="@layout/side_nav_header"
         app:menu="@menu/side_nav"
