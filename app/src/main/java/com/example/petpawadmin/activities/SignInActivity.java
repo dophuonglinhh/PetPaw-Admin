@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.petpawadmin.databinding.ActivitySignInBinding;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignInActivity extends AppCompatActivity {
     private ActivitySignInBinding binding;
@@ -20,12 +21,19 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // admin credentials
-        String adminEmail = "admin@gmail.com";
-        String adminPassword = "admin123";
+//        String adminEmail = "admin@gmail.com";
+//        String adminPassword = "admin123";
 
         binding.btnLogin.setOnClickListener(v -> {
             String txt_email = binding.email.getText().toString();
             String txt_password = binding.password.getText().toString();
+
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("Admin").document("nolD8tefH4w9mwE9efzM").get().addOnSuccessListener(documentSnapshot -> {
+                String adminEmail = documentSnapshot.getString("email");
+                String adminPassword = documentSnapshot.getString("password");
+
 
             if (txt_email.isEmpty() || txt_password.isEmpty()) {
                 Toast.makeText(SignInActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
@@ -37,6 +45,9 @@ public class SignInActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(SignInActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
             }
+
+            });
+
         });
     }
 }
