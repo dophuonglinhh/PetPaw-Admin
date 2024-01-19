@@ -36,8 +36,8 @@
             android:queryHint="Search users" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/usersListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/usersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"

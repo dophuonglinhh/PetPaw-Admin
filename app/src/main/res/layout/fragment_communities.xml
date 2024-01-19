@@ -36,8 +36,8 @@
             android:queryHint="Search communities" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/communitiesListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/communitiesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
