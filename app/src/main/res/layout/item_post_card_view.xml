@@ -139,39 +139,6 @@
                         android:layout_height="wrap_content"
                         android:text="Pet Name 1, Pet name 2"/>
                 </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-                    <ImageView
-                        android:id="@+id/postCardViewLikeImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_post_unlike"
-                        android:layout_marginRight="5dp" />
-
-                    <TextView
-                        android:id="@+id/postCardViewLikeCountTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="-1" />
-                    <ImageView
-                        android:id="@+id/postCardViewCommentImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_post_comment"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="20dp"/>
-                    <TextView
-                        android:id="@+id/postCardViewCommentCountTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="-1" />
-                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.cardview.widget.CardView>

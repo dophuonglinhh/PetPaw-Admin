@@ -1,6 +1,7 @@
 package com.example.petpawadmin.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petpawadmin.R;
+import com.example.petpawadmin.activities.EditPostActivity;
 import com.example.petpawadmin.models.Post;
 import com.example.petpawadmin.models.User;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -67,14 +69,14 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             holder.postCardViewIsModified.setVisibility(View.GONE);
         }
 
-        /*
+        String authorId = postList.get(position).getAuthorId();
         holder.postCardViewEditImageView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, CreatePostActivity.class);
+            Intent intent = new Intent(context, EditPostActivity.class);
             intent.putExtra("postId", postId);
             intent.putExtra("communityId", communityId);
+            intent.putExtra("authorId", authorId);
             context.startActivity(intent);
         });
-         */
 
 //        -------------- Format Date -------------
         Date date = postList.get(position).getDateModified();
@@ -92,21 +94,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             }
             holder.postCardViewTagsTextView.setText(tagList.toString());
         }
-
-//      ---------------  Update the like button end -----------
-        holder.postCardViewContentTextView.setText(postList.get(position).getContent());
-        holder.postCardViewLikeCountTextView.setText(String.valueOf(postList.get(position).getLikes().size()));
-        holder.postCardViewCommentCountTextView.setText(String.valueOf(postList.get(position).getComments().size()));
-        /*
-        holder.postCardViewCommentImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, PostCommentActivity.class);
-                intent.putExtra("postID", postId);
-                context.startActivity(intent);
-            }
-        });
-         */
 
 //        -------------- Show pet name -------------
         StringBuilder petNameList = new StringBuilder();
@@ -198,8 +185,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             postCardViewUserNameTextView = itemView.findViewById(R.id.postCardViewUserNameTextView);
             postCardViewDate = itemView.findViewById(R.id.postCardViewDate);
             postCardViewContentTextView = itemView.findViewById(R.id.postCardViewContentTextView);
-            postCardViewLikeCountTextView = itemView.findViewById(R.id.postCardViewLikeCountTextView);
-            postCardViewCommentCountTextView = itemView.findViewById(R.id.postCardViewCommentCountTextView);
             postCardViewTagsTextView = itemView.findViewById(R.id.postCardViewTagsTextView);
             postCardViewPetNameTextView = itemView.findViewById(R.id.postCardViewPetNameTextView);
             postCardViewIsModified = itemView.findViewById(R.id.postCardViewIsModified);
@@ -207,8 +192,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
 //          --------ImageView----------
             postCardImageView = itemView.findViewById(R.id.postCardImageView);
             postCardViewProfilePic = itemView.findViewById(R.id.postCardViewProfilePic);
-            postCardViewLikeImageView = itemView.findViewById(R.id.postCardViewLikeImageView);
-            postCardViewCommentImageView = itemView.findViewById(R.id.postCardViewCommentImageView);
             postCardViewEditImageView = itemView.findViewById(R.id.postCardViewEditImageView);
 
 //            --------LinearLayout----------

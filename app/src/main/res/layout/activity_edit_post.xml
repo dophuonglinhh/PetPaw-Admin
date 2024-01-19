@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".activities.EditPostActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="Edit Post"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:elevation="20dp"
+                app:cardBackgroundColor="@color/secondary"
+                app:cardCornerRadius="30dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:elevation="18dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:text="Image "
+                            android:textStyle="bold"
+                            android:paddingStart="5dp"
+                            android:textSize="9pt"
+                            android:drawableEnd="@drawable/ic_post_image"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingVertical="5sp">
+
+                            <ImageView
+                                android:id="@+id/createPostImageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="200dp"
+                                android:scaleType="centerCrop"
+                                android:layout_weight="1"
+                                android:visibility="gone"/>
+
+                            <Button
+                                android:id="@+id/createPostSelectImageButton"
+                                app:cornerRadius="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Select Image"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:elevation="20dp"
+                app:cardBackgroundColor="@color/secondary"
+                app:cardCornerRadius="30dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:elevation="18dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:text="Description "
+                            android:textStyle="bold"
+                            android:textSize="9pt"
+                            android:paddingStart="5dp"
+                            android:drawableEnd="@drawable/ic_post_description"/>
+
+                        <EditText
+                            android:id="@+id/createPostDescriptionEditText"
+                            android:layout_width ="match_parent"
+                            android:layout_height ="75dp"
+                            android:minHeight="150dp"
+                            android:maxHeight="300dp"
+                            android:layout_margin="10dp"
+                            android:padding="10dp"
+                            android:layout_weight ="1"
+                            android:inputType="textCapSentences|textMultiLine"
+                            android:maxLines ="4"
+                            android:maxLength ="2000"
+                            android:scrollHorizontally="false"
+                            android:background="@drawable/border_edit_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tag your pet "
+                            android:textStyle="bold"
+                            android:textSize="9pt"
+                            android:paddingStart="5dp"
+                            android:layout_marginTop="2sp"
+                            android:drawableEnd="@drawable/ic_post_tag_pet"/>
+
+                        <ListView
+                            android:id="@+id/createPostTagsListView"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <!--       ....................... Button ...................     -->
+
+
+            <LinearLayout
+                android:id="@+id/createPostButtonLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="visible"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/createPostSaveButton"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
+                    android:text="Save"
+                    app:cornerRadius="20dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="10sp"/>
+                <Button
+                    android:id="@+id/createPostDeleteButton"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
+                    android:text="Delete"
+                    app:cornerRadius="20dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="10sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

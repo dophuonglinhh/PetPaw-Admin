@@ -20,10 +20,6 @@ public class SignInActivity extends AppCompatActivity {
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // admin credentials
-//        String adminEmail = "admin@gmail.com";
-//        String adminPassword = "admin123";
-
         binding.btnLogin.setOnClickListener(v -> {
             String txt_email = binding.email.getText().toString();
             String txt_password = binding.password.getText().toString();
