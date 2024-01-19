@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,6 +127,11 @@ public class UsersFragment extends Fragment {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         User user = document.toObject(User.class);
+//                        if(user.getImageURL() == null){
+//                            Log.d("User Fragment", "user image null ");
+//                        }else{
+//                            Log.d("User Fragment", "user: " + user.getImageURL());
+//                        }
                         if(searchValue.equals("")){
                             User userTemp = new User(user.getUid(), user.getName(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImageURL());
                             userList.add(userTemp);
@@ -139,6 +145,9 @@ public class UsersFragment extends Fragment {
                             }
                         }
                     }
+//                    for(User user: userList){
+//                        Log.d("User Fragment", "user: " + user.getImageURL());
+//                    }
                     if (context != null) {
                         binding.usersRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
                         binding.usersRecyclerView.setAdapter(new UsersListAdapter(requireContext(), userList));
