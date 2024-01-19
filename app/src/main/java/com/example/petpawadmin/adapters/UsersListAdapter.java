@@ -1,6 +1,7 @@
 package com.example.petpawadmin.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.petpawadmin.R;
+import com.example.petpawadmin.activities.UserDetailsActivity;
 import com.example.petpawadmin.models.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.Objects;
 
 public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.UserViewHolder> {
 
@@ -53,17 +52,10 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
         Log.d("TAG", "- user id: " + userId);
         holder.userCardViewUsername.setText(usersList.get(position).getName());
         Log.d("TAG", "-- user name: " + usersList.get(position).getName());
-        if (usersList.get(position).getImageURL() == null) {
-            Log.d("TAG", "-- go to null: " + usersList.get(position).getName());
-
-            holder.userCardViewProfilePic.setImageResource(R.drawable.default_avatar);
-        } else {
-            Log.d("TAG", "-- have image " + usersList.get(position).getName());
-
-            Picasso.get()
+        Picasso.get()
                     .load(usersList.get(position).getImageURL())
+                    .placeholder(R.drawable.default_avatar)
                     .into(holder.userCardViewProfilePic);
-        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +63,9 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
                 int currentPosition = holder.getAdapterPosition();
                 if (currentPosition != RecyclerView.NO_POSITION) {
                     String selectedUserId = usersList.get(currentPosition).getUid();
-
+                    Intent intent = new Intent(context, UserDetailsActivity.class);
+                    intent.putExtra("userId", selectedUserId);
+                    context.startActivity(intent);
                 }
             }
         });
