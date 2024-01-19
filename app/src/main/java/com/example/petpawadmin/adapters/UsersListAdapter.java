@@ -17,14 +17,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.petpawadmin.R;
 import com.example.petpawadmin.activities.UserDetailsActivity;
 import com.example.petpawadmin.models.User;
+import com.google.api.LogDescriptor;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.UserViewHolder> {
 
-    Context context;
-    List<User> usersList;
+    private Context context;
+    private List<User> usersList;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference usersRef = db.collection("users");
 
 
     public UsersListAdapter(Context context, List<User> usersList) {
@@ -48,14 +53,27 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
         Log.d("TAG", "** user number: " + position);
 
         String userId = usersList.get(position).getUid();
+        holder.userCardViewUsername.setText(usersList.get(position).getName());
 
         Log.d("TAG", "- user id: " + userId);
-        holder.userCardViewUsername.setText(usersList.get(position).getName());
         Log.d("TAG", "-- user name: " + usersList.get(position).getName());
-        Picasso.get()
-                    .load(usersList.get(position).getImageURL())
-                    .placeholder(R.drawable.default_avatar)
-                    .into(holder.userCardViewProfilePic);
+
+        db.collection("users").document(userId).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                String userImageUrl = (String) task.getResult().get("imageURL");
+                Log.d("TAG", "--- user image url: " + userImageUrl);
+                if (userImageUrl == null || userImageUrl.equals("")) {
+                    Log.d("User List Adapter", "image null ");
+                    holder.userCardViewProfilePic.setImageResource(R.drawable.default_avatar);
+                } else {
+                    Picasso.get()
+                            .load(userImageUrl)
+                            .tag(usersList.get(position).getEmail())
+                            .placeholder(R.drawable.default_avatar)
+                            .into(holder.userCardViewProfilePic);
+                }
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
