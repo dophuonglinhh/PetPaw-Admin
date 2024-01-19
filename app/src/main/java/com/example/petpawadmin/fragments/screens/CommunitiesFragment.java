@@ -129,6 +129,8 @@ public class CommunitiesFragment extends Fragment {
                         Community community = document.toObject(Community.class);
                         if(searchValue.equals("")){
                             communityList.add(community);
+                        } else if (community.getId().contains(searchValue)) {
+                            communityList.add(community);
                         } else {
                             if(community.getName().toLowerCase().contains(searchValue.toLowerCase())){
                                 communityList.add(community);

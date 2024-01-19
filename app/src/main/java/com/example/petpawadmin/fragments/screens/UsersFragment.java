@@ -129,6 +129,9 @@ public class UsersFragment extends Fragment {
                         if(searchValue.equals("")){
                             User userTemp = new User(user.getUid(), user.getName(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImageURL());
                             userList.add(userTemp);
+                        } else if (user.getUid().contains(searchValue)) {
+                            User userTemp = new User(user.getUid(), user.getName(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImageURL());
+                            userList.add(userTemp);
                         } else {
                             if(user.getName().toLowerCase().contains(searchValue.toLowerCase())){
                                 User userTemp = new User(user.getUid(), user.getName(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImageURL());
