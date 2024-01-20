@@ -54,6 +54,8 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
 
         String userId = usersList.get(position).getUid();
         holder.userCardViewUsername.setText(usersList.get(position).getName());
+        holder.userCardViewId.setText(usersList.get(position).getUid());
+
 
         Log.d("TAG", "- user id: " + userId);
         Log.d("TAG", "-- user name: " + usersList.get(position).getName());
@@ -96,16 +98,18 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
         }
 
         public class UserViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout userCardViewLinearLayout;
         ImageView userCardViewProfilePic;
         TextView userCardViewUsername;
+        TextView userCardViewId;
 
-        public UserViewHolder(@NonNull View itemView) {
+
+            public UserViewHolder(@NonNull View itemView) {
             super(itemView);
             userCardViewProfilePic = itemView.findViewById(R.id.userCardViewProfilePic);
             userCardViewUsername = itemView.findViewById(R.id.userCardViewUsername);
-            userCardViewLinearLayout = itemView.findViewById(R.id.userCardViewLinearLayout);
-        }
+            userCardViewId = itemView.findViewById(R.id.userCardViewId);
+
+            }
     }
 }
 

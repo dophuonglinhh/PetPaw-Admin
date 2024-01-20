@@ -13,10 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petpawadmin.R;
+import com.example.petpawadmin.activities.CommunityDetailsActivity;
 import com.example.petpawadmin.activities.EmptyActivity;
 import com.example.petpawadmin.models.Community;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,6 +66,7 @@ public class CommunitiesListAdapter extends RecyclerView.Adapter<CommunitiesList
                 .placeholder(R.drawable.default_avatar)
                 .into(holder.communityCardViewPic);
         holder.communityCardViewId.setText(communityList.get(position).getId());
+        /*
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         holder.deleteCommunityBtn.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +85,16 @@ public class CommunitiesListAdapter extends RecyclerView.Adapter<CommunitiesList
                         });
             }
         });
+
+         */
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CommunityDetailsActivity.class);
+                intent.putExtra("communityId", communityId);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -91,19 +104,15 @@ public class CommunitiesListAdapter extends RecyclerView.Adapter<CommunitiesList
 
 
     public class CommunityViewHolder extends RecyclerView.ViewHolder {
-        RelativeLayout communityCardViewRelativeLayout;
         ImageView communityCardViewPic;
         TextView communityCardViewName;
         TextView communityCardViewId;
-        Button deleteCommunityBtn;
 
         public CommunityViewHolder(@NonNull View itemView) {
             super(itemView);
             communityCardViewPic = itemView.findViewById(R.id.communityCardViewPic);
             communityCardViewName = itemView.findViewById(R.id.communityCardViewName);
             communityCardViewId = itemView.findViewById(R.id.communityCardViewId);
-            communityCardViewRelativeLayout = itemView.findViewById(R.id.communityCardViewRelativeLayout);
-            deleteCommunityBtn = itemView.findViewById(R.id.deleteCommunityBtn);
 
         }
     }
