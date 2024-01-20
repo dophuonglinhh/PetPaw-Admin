@@ -77,6 +77,10 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             intent.putExtra("authorId", authorId);
             context.startActivity(intent);
         });
+//        -------------- Show post description -------------
+        holder.postCardViewContentTextView.setText(postList.get(position).getContent());
+//        -------------- Show post description -------------
+        holder.postId.setText(postList.get(position).getPostId());
 
 //        -------------- Format Date -------------
         Date date = postList.get(position).getDateModified();
@@ -179,6 +183,7 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
         ImageView postCardViewProfilePic, postCardImageView, postCardViewLikeImageView, postCardViewCommentImageView, postCardViewEditImageView;
         TextView postCardViewIsModified, postCardViewUserNameTextView, postCardViewDate, postCardViewContentTextView, postCardViewLikeCountTextView, postCardViewCommentCountTextView, postCardViewTagsTextView, postCardViewPetNameTextView;
         LinearLayout postCardViewPetNameLinearLayout;
+        TextView postId;
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
 //            --------TextView----------
@@ -188,6 +193,7 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             postCardViewTagsTextView = itemView.findViewById(R.id.postCardViewTagsTextView);
             postCardViewPetNameTextView = itemView.findViewById(R.id.postCardViewPetNameTextView);
             postCardViewIsModified = itemView.findViewById(R.id.postCardViewIsModified);
+            postId = itemView.findViewById(R.id.postCardViewPostID);
 
 //          --------ImageView----------
             postCardImageView = itemView.findViewById(R.id.postCardImageView);

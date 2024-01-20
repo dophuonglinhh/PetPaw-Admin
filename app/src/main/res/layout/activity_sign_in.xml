@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondary"
+    android:background="@drawable/bg_sign_in"
     tools:ignore="MissingPrefix">
 
     <LinearLayout
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="130dp"
             android:text="Hello Again!"
             android:textColor="@color/black"
             android:textSize="36dp" />
@@ -71,18 +71,6 @@
             android:textSize="20dp"
             android:text="admin123"/>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="42dp"
-            android:layout_marginTop="15dp"
-            android:lineHeight="20sp"
-            android:text="Forgot your password?"
-            android:textColor="#010101"
-            android:textFontWeight="500"
-            android:textSize="15sp" />
 
         <Button
             android:id="@+id/btnLogin"

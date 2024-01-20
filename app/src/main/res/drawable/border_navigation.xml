@@ -7,6 +7,6 @@
         android:color="@color/primary" />
 
     <solid
-        android:color="@color/secondary"/>
+        android:color="@color/white"/>
 
 </shape>

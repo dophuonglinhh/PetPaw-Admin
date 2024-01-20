@@ -63,6 +63,7 @@ public class CommunitiesListAdapter extends RecyclerView.Adapter<CommunitiesList
                 .load(communityList.get(position).getImageURL())
                 .placeholder(R.drawable.default_avatar)
                 .into(holder.communityCardViewPic);
+        holder.communityCardViewId.setText(communityList.get(position).getId());
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         holder.deleteCommunityBtn.setOnClickListener(new View.OnClickListener() {
@@ -93,12 +94,14 @@ public class CommunitiesListAdapter extends RecyclerView.Adapter<CommunitiesList
         RelativeLayout communityCardViewRelativeLayout;
         ImageView communityCardViewPic;
         TextView communityCardViewName;
+        TextView communityCardViewId;
         Button deleteCommunityBtn;
 
         public CommunityViewHolder(@NonNull View itemView) {
             super(itemView);
             communityCardViewPic = itemView.findViewById(R.id.communityCardViewPic);
             communityCardViewName = itemView.findViewById(R.id.communityCardViewName);
+            communityCardViewId = itemView.findViewById(R.id.communityCardViewId);
             communityCardViewRelativeLayout = itemView.findViewById(R.id.communityCardViewRelativeLayout);
             deleteCommunityBtn = itemView.findViewById(R.id.deleteCommunityBtn);
 

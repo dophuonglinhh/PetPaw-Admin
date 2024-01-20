@@ -6,6 +6,7 @@
     android:id="@+id/postsFragment"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:background="@drawable/bg_app"
     tools:context=".fragments.screens.PostsFragment">
 
     <TextView
@@ -30,10 +31,10 @@
             android:layout_alignParentEnd="true"
             android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
-            android:background="@drawable/bg_search_view"
+            android:background="@drawable/border_search_view"
             android:elevation="5dp"
             android:iconifiedByDefault="false"
-            android:queryHint="Search posts by name/tag/id" />
+            android:queryHint="Search posts by caption/tag/id" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

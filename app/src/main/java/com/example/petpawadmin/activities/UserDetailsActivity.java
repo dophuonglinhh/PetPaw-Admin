@@ -81,7 +81,6 @@ public class UserDetailsActivity extends AppCompatActivity {
         );
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.banReasonSpinner.setPrompt("Select a reason");
         binding.banReasonSpinner.setAdapter(adapter);
 
         binding.banReasonSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -166,6 +165,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                         } else {
                             binding.avatar.setImageResource(R.drawable.default_avatar);
                         }
+                        binding.userid.setText(user.getUid());
                         binding.name.setText(user.getName());
                         if (user.getEmail() != null) {
                             binding.email.setText(user.getEmail());

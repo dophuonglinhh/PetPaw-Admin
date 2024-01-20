@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+    android:background="@drawable/bg_app"
     android:orientation="vertical">
 
     <LinearLayout
@@ -29,7 +30,7 @@
             android:text="Edit Profile"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -126,21 +127,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     android:layout_centerInParent="true"
                     android:text="John Robert"
-                    android:textStyle="bold"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-                    />
+                    android:textStyle="bold" />
                 <EditText
                     android:id="@+id/editNameText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:textAlignment="textEnd"
                     android:text="John Robert"
                     android:textStyle="bold"
@@ -180,8 +182,9 @@
                     android:textSize="18dp"/>
                 <EditText
                     android:id="@+id/editAddressText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:textAlignment="textEnd"
                     android:text="123 Avenue St."
                     android:textStyle="bold"

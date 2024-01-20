@@ -55,7 +55,6 @@
                             android:id="@+id/postCardViewUserNameTextView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Le Duy Quang"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -125,19 +124,38 @@
                     android:id="@+id/postCardViewPetNameLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pet: "
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/postCardViewPetNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pet: "
+                        android:text="Post ID: "
                         android:textStyle="bold"
                         android:textSize="17sp"/>
                     <TextView
-                        android:id="@+id/postCardViewPetNameTextView"
+                        android:id="@+id/postCardViewPostID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pet Name 1, Pet name 2"/>
+                        />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
