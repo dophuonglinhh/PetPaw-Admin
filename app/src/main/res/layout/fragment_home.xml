@@ -191,7 +191,7 @@
             android:layout_marginVertical="5dp"/>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="match_parent"
             app:cardBackgroundColor="#79FFFFFF"
             app:cardCornerRadius="5dp">
             <ListView

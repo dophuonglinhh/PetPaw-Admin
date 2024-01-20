@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -135,7 +136,7 @@ public class HomeFragment extends Fragment {
         DocumentReference docRef = usersRef.document("nolD8tefH4w9mwE9efzM");
         docRef.get().addOnSuccessListener(documentSnapshot -> {
             List<String> adminNotifications = (List<String>) documentSnapshot.get("notifications");
-
+            Collections.reverse(adminNotifications);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(
                     requireContext(),
                     android.R.layout.simple_list_item_1,
@@ -155,6 +156,7 @@ public class HomeFragment extends Fragment {
 
                 if (value != null && value.exists()) {
                     List<String> adminNotifications = (List<String>) value.get("notifications");
+                    Collections.reverse(adminNotifications);
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(
                             requireContext(),
                             android.R.layout.simple_list_item_1,
