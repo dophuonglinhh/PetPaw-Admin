@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,18 +54,40 @@ public class CommunityDetailsActivity extends AppCompatActivity {
         binding.deleteCommunityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection("Communities").document(communityId)
-                        .delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(CommunityDetailsActivity.this, "Community Deleted", Toast.LENGTH_SHORT).show();
-                                finish();
 
-                            }
-                        });
             }
         });
+        binding.deleteCommunityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CommunityDetailsActivity.this);
+
+                builder.setTitle("Confirm Delete");
+                builder.setMessage("Are you sure you want to delete this community?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        db.collection("Communities").document(communityId)
+                                .delete()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(CommunityDetailsActivity.this, "Community Deleted", Toast.LENGTH_SHORT).show();
+                                        finish();
+
+                                    }
+                                });
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
 
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

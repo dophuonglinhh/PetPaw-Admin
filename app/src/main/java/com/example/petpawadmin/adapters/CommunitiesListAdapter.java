@@ -66,27 +66,7 @@ public class CommunitiesListAdapter extends RecyclerView.Adapter<CommunitiesList
                 .placeholder(R.drawable.default_avatar)
                 .into(holder.communityCardViewPic);
         holder.communityCardViewId.setText(communityList.get(position).getId());
-        /*
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        holder.deleteCommunityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db.collection("Communities").document(communityId)
-                        .delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(context, "Community Deleted", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(context, EmptyActivity.class);
-                                context.startActivity(intent);
-                            }
-                        });
-            }
-        });
-
-         */
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
