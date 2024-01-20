@@ -1,9 +1,12 @@
 package com.example.petpawadmin.fragments.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +14,13 @@ import android.widget.ArrayAdapter;
 
 import com.example.petpawadmin.R;
 import com.example.petpawadmin.databinding.FragmentHomeBinding;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 
 import java.util.List;
 
@@ -30,6 +39,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ListenerRegistration listener;
 
     private FragmentHomeBinding binding;
     public HomeFragment() {
@@ -64,6 +74,20 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("Home Fragment", "onPause");
+        listener.remove();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("Home Fragment", "onResume");
+        notificationListener();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding= FragmentHomeBinding.inflate(inflater, container, false);
@@ -90,7 +114,26 @@ public class HomeFragment extends Fragment {
         });
 
         //display the listview
-        db.collection("Admin").document("nolD8tefH4w9mwE9efzM").get().addOnSuccessListener(documentSnapshot -> {
+//        db.collection("Admin").document("nolD8tefH4w9mwE9efzM").get().addOnSuccessListener(documentSnapshot -> {
+//            List<String> adminNotifications = (List<String>) documentSnapshot.get("notifications");
+//
+//            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+//                    requireContext(),
+//                    android.R.layout.simple_list_item_1,
+//                    adminNotifications
+//            );
+//
+//            binding.adminHomeNotificationListView.setAdapter(adapter);
+//        });
+
+        return binding.getRoot();
+    }
+
+    private void notificationListener(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference usersRef = db.collection("Admin");
+        DocumentReference docRef = usersRef.document("nolD8tefH4w9mwE9efzM");
+        docRef.get().addOnSuccessListener(documentSnapshot -> {
             List<String> adminNotifications = (List<String>) documentSnapshot.get("notifications");
 
             ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -102,6 +145,25 @@ public class HomeFragment extends Fragment {
             binding.adminHomeNotificationListView.setAdapter(adapter);
         });
 
-        return binding.getRoot();
+        listener = docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    Log.d("Home Fragment", "get failed with " + error);
+                    return;
+                }
+
+                if (value != null && value.exists()) {
+                    List<String> adminNotifications = (List<String>) value.get("notifications");
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                            requireContext(),
+                            android.R.layout.simple_list_item_1,
+                            adminNotifications
+                    );
+
+                    binding.adminHomeNotificationListView.setAdapter(adapter);
+                }
+            }
+        });
     }
 }
